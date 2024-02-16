@@ -1,6 +1,22 @@
 import React from 'react';
+import BudgetChart from '../BudgetChart/BudgetChart';
+import D3BudgetChart from '../D3BudgetChart/D3BudgetChart';
+import axios from 'axios';
 
-function HomePage() {
+export default class HomePage extends React.Component {
+    state = {
+        myMonthlyBudget: []
+    }
+    componentDidMount() {
+        axios.get(`http://localhost:3001/budget`)
+        .then(response => { 
+            this.myMonthlyBudget = 
+            this.setState({
+                myMonthlyBudget: response.data.myMonthlyBudget
+            })
+        })
+    }
+    render(){
   return (
     <main>
     <section className="container center">
@@ -21,22 +37,12 @@ function HomePage() {
                 <p>People who stick to a financial plan, budgeting every expense, get out of debt faster! Also, they live happier lives... since they expend without guilt or fear... because they know it is all good and accounted for.</p>
             </div>
     
-            <div className="text-box">
-                <h2>Chart</h2>
-                <section>
-                    <canvas id="myChart" width="400" height="400"></canvas>
-                </section>
-                <section className="advanced-chart-area center">
-                    <h1>Advanced Budget Chart</h1>
-                    <button className="randomize">Refresh</button>
-                </section>
-            </div>
-    
         </article>
     </section>
+    <BudgetChart />
+    <D3BudgetChart/>
 
 </main>
   );
 }
-
-export default HomePage;
+}

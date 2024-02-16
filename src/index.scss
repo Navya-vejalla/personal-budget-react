@@ -390,7 +390,7 @@ body {
 .hero {
   height: 350px;
   background-color: #b4c6f0;
-  background-image: url('/public/bg.png');
+  //background-image: url('/public/bg.png');
   background-size: 400px;
   background-repeat: no-repeat;
   background-position: center bottom;
@@ -463,9 +463,9 @@ polyline {
   fill: none;
 }
 
-.advanced-chart-area {
-  width: 960px;
-  height: 500px;
-  position: relative;
+.pie-chart {
   text-align: center;
+  margin-top: 40px;
+  height: 500px;
+  width: 500px;
 }
